@@ -1,0 +1,116 @@
+#:kivy 2.2.1
+WindowManager:  
+    LogIn:
+    SignUp:
+    Main:
+
+<LogIn>:
+    name:"login"
+    email:email
+    password:password
+
+    GridLayout:
+        cols:1
+        
+        GridLayout:
+            cols:2
+
+            Label:
+                text: "Email: "
+            
+            TextInput:
+                id:email
+                multiline:False
+            
+            Label:
+                text: "Password: "
+            
+            TextInput:
+                id:password
+                multiline:False
+        
+        Button:
+            text: "Log In"
+            on_press:root.submit()
+            on_release:
+                app.root.current="main" if root.submit() == "Welcome" else "login" 
+        
+        Button:
+            text: "Create an account"
+            on_release:
+                app.root.current="signup"
+
+<SignUp>:
+    name:"signup"
+    fname:fname
+    lname:lname
+    uname:uname
+    email:email
+    password:password
+    GridLayout:
+        cols:1
+        
+        GridLayout:
+            cols:2
+
+            Label:
+                text: "First name: "
+            
+            TextInput:
+                id:fname
+                multiline:False
+            
+            Label:
+                text: "Last Name: "
+            
+            TextInput:
+                id:lname
+                multiline:False
+            
+            Label:
+                text: "Username: "
+            
+            TextInput:
+                id:uname
+                multiline:False
+
+            Label:
+                text: "Email: "
+            
+            TextInput:
+                id:email
+                multiline:False
+            
+            Label:
+                text: "Password: "
+            
+            TextInput:
+                id:password
+                multiline:False
+            
+            Button:
+                text: "Already have an account"
+                on_release:
+                    app.root.current = "login"
+            
+            Button:
+                text: "Sign Up"
+                on_press:root.enter()
+                on_release:
+                    app.root.current = "main" if root.enter == 'Welcome' else 'signup'
+
+<Main>:
+    name:"main"
+
+    BoxLayout:
+        orientation:"vertical"
+        size:root.width,root.height
+
+        padding: 50
+        spacing: 20
+
+        Image:
+            source: "https://m.media-amazon.com/images/M/MV5BMjI0MDMzNTQ0M15BMl5BanBnXkFtZTgwMTM5NzM3NDM@._V1_SX300.jpg"
+        
+
+
